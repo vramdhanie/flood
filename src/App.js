@@ -15,6 +15,7 @@ function App() {
       bg: `cell.${Math.floor(Math.random() * 8)}`,
     }));
     setCells(d);
+    // use an incidence matrix
   }, []);
 
   return (
