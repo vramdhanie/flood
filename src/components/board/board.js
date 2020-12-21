@@ -1,15 +1,15 @@
 import React from "react";
 import { Grid, Center } from "@chakra-ui/react";
-import Cell from "../cell/cell";
 
-const Board = ({ cells }) => {
+import Controls from "../controls/controls";
+
+const Board = ({ setCurrentColour, children }) => {
   return (
-    <Center w="full" height="100vh">
-      <Grid w={400} h={400} gridTemplateColumns="repeat(40, 1fr)">
-        {cells.map((cell) => (
-          <Cell key={cell.id} {...cell} />
-        ))}
+    <Center w="full" height="100vh" flexDirection="column">
+      <Grid w={300} h={300} gridTemplateColumns="repeat(30, 1fr)">
+        {children}
       </Grid>
+      <Controls n={6} setCurrentColour={setCurrentColour} />
     </Center>
   );
 };

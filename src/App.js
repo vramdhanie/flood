@@ -1,22 +1,12 @@
-import { useState, useEffect } from "react";
-
 import logo from "./images/logo.png";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import Board from "./components/board/board";
+import Cell from "./components/cell/cell";
+import useGame from "./hooks/game";
 
 function App() {
-  const [cells, setCells] = useState([]);
-
-  useEffect(() => {
-    const c = new Array(1600);
-    const d = c.fill(0).map((_, i) => ({
-      id: i,
-      bg: `cell.${Math.floor(Math.random() * 8)}`,
-    }));
-    setCells(d);
-    // use an incidence matrix
-  }, []);
+  const [cells, currentColour, setCurrentColour, yourCells] = useGame(6);
 
   return (
     <div className="App">
@@ -29,7 +19,11 @@ function App() {
           </header>
         </Route>
         <Route path="/play">
-          <Board cells={cells} />
+          <Board setCurrentColour={setCurrentColour}>
+            {cells.map((cell) => (
+              <Cell key={cell.id} {...cell} />
+            ))}
+          </Board>
         </Route>
       </Router>
     </div>
