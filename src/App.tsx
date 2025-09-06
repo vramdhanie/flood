@@ -10,7 +10,7 @@ function App() {
 
   return (
     <div className="App min-h-screen flex flex-col">
-      <Router>
+      <Router basename={process.env.PUBLIC_URL || ''}>
         <div className="flex-1">
           <Routes>
             <Route path="/" element={

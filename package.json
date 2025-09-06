@@ -2,7 +2,7 @@
   "name": "flood",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://vincentramdhanie.github.io/flood",
+  "homepage": "https://vramdhanie.github.io/flood",
   "dependencies": {
     "@testing-library/jest-dom": "^6.1.4",
     "@testing-library/react": "^13.4.0",
