@@ -9,7 +9,7 @@
 
 A modern, responsive flood game built with React 18, TypeScript, and TailwindCSS. The objective is to flood the entire grid with a single color in the smallest number of steps possible.
 
-![Flood Game Screenshot](game.png)
+<img src="game.png" alt="Flood Game Screenshot" width="400">
 
 ## 🎮 How to Play
 
