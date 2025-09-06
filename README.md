@@ -31,7 +31,7 @@ A modern, responsive flood game built with React 18, TypeScript, and TailwindCSS
 
 ## 🚀 Live Demo
 
-**[Play the game now!](https://vramdhanie.github.io/flood)**
+**[Play the game now!](https://flood.vincentramdhanie.com)**
 
 ## 🛠️ Technology Stack
 
