@@ -1,4 +1,4 @@
-import logo from "./images/logo.png";
+
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 import Board from "./components/board/board";
