@@ -7,37 +7,44 @@ interface ControlsProps {
   disabled?: boolean;
 }
 
-const colorMap: Record<string, string> = {
-  'cell.0': '#FF0000',
-  'cell.1': '#191970',
-  'cell.2': '#006400',
-  'cell.3': '#ffd700',
-  'cell.4': '#00ff00',
-  'cell.5': '#1e90ff',
-  'cell.6': '#c71585',
-  'cell.7': '#ffb6c1',
+const controlStyleMap: Record<string, string> = {
+  'cell.0': 'bg-cell-0 shadow-red-500/40 hover:shadow-red-500/80',
+  'cell.1': 'bg-cell-1 shadow-blue-500/40 hover:shadow-blue-500/80',
+  'cell.2': 'bg-cell-2 shadow-lime-500/40 hover:shadow-lime-500/80',
+  'cell.3': 'bg-cell-3 shadow-yellow-400/40 hover:shadow-yellow-400/80',
+  'cell.4': 'bg-cell-4 shadow-purple-500/40 hover:shadow-purple-500/80',
+  'cell.5': 'bg-cell-5 shadow-cyan-500/40 hover:shadow-cyan-500/80',
+  'cell.6': 'bg-cell-6 shadow-teal-500/40 hover:shadow-teal-500/80',
+  'cell.7': 'bg-cell-7 shadow-orange-500/40 hover:shadow-orange-500/80',
 };
 
 const Controls: React.FC<ControlsProps> = ({ n, setCurrentColour, disabled = false }) => {
   const colours = useColours(n);
   
   return (
-    <div className="mt-4">
-      <div className="mb-2 text-center font-semibold text-gray-700">
-        Select a color to flood:
+    <div className="w-full flex flex-col items-center">
+      <div className="mb-4 text-center font-semibold text-slate-300 tracking-wide uppercase text-sm flex items-center gap-2">
+        <span className="w-8 h-px bg-slate-700"></span>
+        Select Color to Flood
+        <span className="w-8 h-px bg-slate-700"></span>
       </div>
-      <div className="w-80" style={{ display: 'grid', gridTemplateColumns: `repeat(${n / 2}, 1fr)`, gap: '4px' }}>
-        {colours.map((colour) => (
-          <button
-            key={colour}
-            className={`w-full h-12 border-2 border-gray-400 cursor-pointer transition-all duration-200 hover:scale-105 hover:shadow-lg ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
-            style={{ backgroundColor: colorMap[colour] }}
-            onClick={() => !disabled && setCurrentColour(colour)}
-            disabled={disabled}
-          >
-            <span className="sr-only">Color {colour.replace('cell.', '')}</span>
-          </button>
-        ))}
+      <div className="flex flex-wrap justify-center gap-4 max-w-sm">
+        {colours.map((colour) => {
+          const styleClass = controlStyleMap[colour] || 'bg-black';
+          return (
+            <button
+              key={colour}
+              aria-label={`Flood with color ${colour.replace('cell.', '')}`}
+              className={`w-14 h-14 rounded-full shadow-lg border-2 border-white/10 cursor-pointer 
+                          transition-all duration-300 transform 
+                          hover:scale-110 hover:border-white/50 active:scale-95
+                          ${styleClass} 
+                          ${disabled ? 'opacity-30 cursor-not-allowed grayscale hover:scale-100 hover:border-white/10' : ''}`}
+              onClick={() => !disabled && setCurrentColour(colour)}
+              disabled={disabled}
+            />
+          );
+        })}
       </div>
     </div>
   );

@@ -7,22 +7,29 @@ module.exports = {
     extend: {
       colors: {
         cell: {
-          0: "#FF0000",
-          1: "#191970", 
-          2: "#006400",
-          3: "#ffd700",
-          4: "#00ff00",
-          5: "#1e90ff",
-          6: "#c71585",
-          7: "#ffb6c1",
+          0: "#ef4444", // Red 500
+          1: "#3b82f6", // Blue 500
+          2: "#84cc16", // Lime 500
+          3: "#facc15", // Yellow 400
+          4: "#a855f7", // Purple 500
+          5: "#06b6d4", // Cyan 500
+          6: "#14b8a6", // Teal 500 (extra)
+          7: "#f97316", // Orange 500 (extra)
         },
         board: {
-          800: "#999999",
-          900: "#BBBBBB",
+          800: "#1e293b", // Slate 800
+          900: "#0f172a", // Slate 900
         }
       },
       gridTemplateColumns: {
         '30': 'repeat(30, minmax(0, 1fr))',
+      },
+      gridTemplateRows: {
+        '30': 'repeat(30, minmax(0, 1fr))',
+      },
+      animation: {
+        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'bounce-light': 'bounce 2s infinite',
       }
     },
   },

@@ -1,4 +1,4 @@
-
+import React from "react";
 
 interface CellProps {
   bg: string;
@@ -6,32 +6,28 @@ interface CellProps {
   id: number;
 }
 
-const colorMap: Record<string, string> = {
-  'cell.0': '#FF0000',
-  'cell.1': '#191970',
-  'cell.2': '#006400',
-  'cell.3': '#ffd700',
-  'cell.4': '#00ff00',
-  'cell.5': '#1e90ff',
-  'cell.6': '#c71585',
-  'cell.7': '#ffb6c1',
+const colorClassMap: Record<string, string> = {
+  'cell.0': 'bg-cell-0',
+  'cell.1': 'bg-cell-1',
+  'cell.2': 'bg-cell-2',
+  'cell.3': 'bg-cell-3',
+  'cell.4': 'bg-cell-4',
+  'cell.5': 'bg-cell-5',
+  'cell.6': 'bg-cell-6',
+  'cell.7': 'bg-cell-7',
 };
 
 const Cell: React.FC<CellProps> = ({ bg, isOwned = false, id }) => {
-  const backgroundColor = colorMap[bg] || '#000000';
+  const bgColorClass = colorClassMap[bg] || 'bg-black';
   
   return (
     <div 
-      className={`w-full h-full ${isOwned ? '' : 'border border-white'}`}
-      style={{ 
-        backgroundColor,
-        // Use negative margins to overcome the grid gap when owned
-        ...(isOwned ? { 
-          margin: '-1px',
-          zIndex: 1,
-        } : {})
+      className={`w-full h-full transition-colors duration-500 ease-in-out ${bgColorClass} ${isOwned ? 'z-10' : 'z-0'} `}
+      style={{
+        // Add a tiny overlap to prevent sub-pixel rendering gaps on some displays given we removed borders
+        transform: 'scale(1.02)'
       }}
-    ></div>
+    />
   );
 };
 
