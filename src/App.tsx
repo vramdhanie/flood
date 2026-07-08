@@ -1,5 +1,5 @@
 
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link, Navigate } from "react-router-dom";
 
 import Board from "./components/board/board";
 import Cell from "./components/cell/cell";
@@ -49,6 +49,7 @@ function App() {
                 ))}
               </Board>
             } />
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>
         
