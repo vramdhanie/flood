@@ -1,6 +1,6 @@
 {
   "short_name": "Flood",
-  "name": "The game of flood",
+  "name": "Flood \u2014 a puzzle game by Vincent Ramdhanie",
   "icons": [
     {
       "src": "/android-icon-36x36.png",
@@ -41,6 +41,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#020617",
+  "background_color": "#020617"
 }

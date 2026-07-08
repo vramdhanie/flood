@@ -1,7 +1,7 @@
 # 🌊 Flood Game
 
 [![Deploy to GitHub Pages](https://github.com/vramdhanie/flood/actions/workflows/deploy.yml/badge.svg)](https://github.com/vramdhanie/flood/actions/workflows/deploy.yml)
-[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live%20Demo-blue?logo=github)](https://vramdhanie.github.io/flood)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live%20Demo-blue?logo=github)](https://flood.vincentramdhanie.com)
 [![React](https://img.shields.io/badge/React-18.x-61DAFB?logo=react)](https://reactjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript)](https://www.typescriptlang.org/)
 [![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.x-06B6D4?logo=tailwindcss)](https://tailwindcss.com/)
@@ -117,7 +117,7 @@ The game is automatically deployed to GitHub Pages using GitHub Actions:
 - **Trigger**: Every push to the `main` branch
 - **Build**: Optimized production build with pnpm
 - **Deploy**: Automatic deployment to GitHub Pages
-- **URL**: https://vramdhanie.github.io/flood
+- **URL**: https://flood.vincentramdhanie.com
 
 ## 📝 License
 
