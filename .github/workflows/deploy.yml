@@ -57,14 +57,11 @@ jobs:
 
       - name: Build
         run: pnpm run build
-        env:
-          # This ensures relative paths work correctly for custom domain
-          PUBLIC_URL: /
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./build
+          path: ./dist
 
   # Deployment job
   deploy:

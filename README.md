@@ -7,27 +7,25 @@
 [![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.x-06B6D4?logo=tailwindcss)](https://tailwindcss.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A modern, responsive flood game built with React 18, TypeScript, and TailwindCSS. The objective is to flood the entire grid with a single color in the smallest number of steps possible.
+A color-flooding puzzle built with React 18, TypeScript, Vite, and TailwindCSS. Flood the whole board with a single color before the move budget runs out.
 
 <img src="game.png" alt="Flood Game Screenshot" width="400">
 
 ## 🎮 How to Play
 
-1. **Start**: The grid begins with random colors, and you control the top-left cell
-2. **Select Color**: Click any color button to flood your territory with that color
-3. **Expand**: All adjacent cells of the selected color join your territory
-4. **Strategy**: Choose colors that will capture the most adjacent cells
-5. **Win**: Flood the entire 30×30 grid in the fewest steps possible!
+1. You own the top-left region. Pick a color (click, or keys **1–6**) to flood your territory with it
+2. Every adjacent cell of that color joins you — your region shows at full brightness
+3. Fill the entire board before **Moves left** hits zero
+4. Four boards: **Easy** (10×10), **Medium** (14×14), **Hard** (21×21), and a **Daily** — the same seeded board for everyone, with the strict classic budget
 
 ## ✨ Features
 
-- 🎯 **Strategic Gameplay**: Plan your moves to minimize steps
-- 📊 **Real-time Stats**: Track steps, progress percentage, and cells owned
-- 🏆 **Win Detection**: Automatic celebration when you flood the entire grid
-- 🔄 **Instant Restart**: Play again without page refresh
-- 📱 **Responsive Design**: Works perfectly on desktop and mobile
-- 🎨 **Modern UI**: Clean, intuitive interface with smooth animations
-- ⚡ **Performance Optimized**: Efficient flood-fill algorithm
+- 🎯 **A real game**: move budgets and a lose state — 25-ish moves, not unlimited clicking
+- 🗓️ **Daily board**: date-seeded, identical for every player, with its own best score
+- 🏆 **Best scores** per difficulty, kept in localStorage
+- 🎨 **Color-blind safe**: Okabe–Ito palette with a distinct glyph on every swatch
+- ⌨️ **Keyboard play**: 1–6 select colors
+- 📱 **Responsive**, dark, quiet UI that keeps the board as the hero
 
 ## 🚀 Live Demo
 
@@ -60,22 +58,21 @@ cd flood
 pnpm install
 
 # Start development server
-pnpm start
+pnpm dev
 
 # Build for production
 pnpm build
 ```
 
-The game will be available at `http://localhost:3000`
+The game will be available at `http://localhost:5173`
 
 ## 🎯 Game Rules
 
-- **Grid Size**: 30×30 cells (900 total)
-- **Colors**: 6 different colors to choose from
-- **Starting Position**: Top-left cell is your initial territory
-- **Flood Mechanism**: Selecting a color floods all connected cells of that color
-- **Victory Condition**: Own all 900 cells
-- **Scoring**: Minimize the number of steps to achieve the best score
+- **Boards**: 10×10 (Easy, 20 moves), 14×14 (Medium, 26), 21×21 (Hard, 40), Daily (14×14, 25)
+- **Colors**: 6, from the Okabe–Ito color-blind-safe palette
+- **Start**: the top-left contiguous patch is your territory
+- **Move**: flooding with a color absorbs every adjacent cell of that color
+- **Win**: own the whole board within the budget; **Lose**: run out of moves
 
 ## 🧠 Algorithm
 
@@ -91,24 +88,19 @@ The game uses an efficient **Breadth-First Search (BFS)** flood-fill algorithm:
 ### Project Structure
 
 ```
+index.html          # Vite entry
 src/
-├── components/
-│   ├── board/          # Game board component
-│   ├── cell/           # Individual cell component
-│   └── controls/       # Color selection controls
-├── hooks/
-│   ├── game.ts         # Main game logic and state
-│   └── colours.ts      # Color management
-└── types/
-    └── images.d.ts     # TypeScript declarations
+├── main.tsx        # React bootstrap
+├── App.tsx         # The whole UI (header, status, board, controls)
+├── game.ts         # Pure game logic: boards, budgets, flood, daily seed, best scores
+└── index.css       # Tailwind + base styles
 ```
 
-### Key Components
+### Design Notes
 
-- **Game Hook**: Manages game state, flood-fill logic, and win detection
-- **Board Component**: Renders the game grid and UI elements
-- **Cell Component**: Individual grid cells with conditional styling
-- **Controls Component**: Color selection buttons
+- Game logic is pure and immutable (`game.ts`) — no React imports, trivially testable
+- Board cells are memoized; unowned cells render dimmed so your territory is visible
+- The Daily board seeds a deterministic RNG from the date, so everyone plays the same puzzle
 
 ## 🚀 Deployment
 
